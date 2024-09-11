@@ -2,8 +2,6 @@
 
 service mariadb start
 
-echo $DB_PASSWORD and $DB_NAME and $DB_USER and this \`${DB_NAME}\`
-
 mariadb -v -u root << EOF
 CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;
 CREATE USER IF NOT EXISTS \`${DB_USER}\`@'localhost' IDENTIFIED BY '${DB_PASSWORD}';
