@@ -1,0 +1,74 @@
+version: "3.8"
+
+services:
+  nginx:
+    build: 
+      context: ./requirements/nginx/.
+      args:
+        - DOMAIN_NAME
+        - CERT_DIR
+        - CERTIFICATE
+        - KEY
+        - COUNTRY
+        - STATE
+        - LOCALITY
+        - ORGANIZATION
+        - UNIT
+        - COMMON_NAME
+    container_name: nginx
+    restart: on-failure
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    env_file:
+      - .env
+    init: true
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress_db:/var/www/wordpress/
+  wordpress:
+    build: ./requirements/wordpress/.
+    container_name: wordpress
+    restart: on-failure
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    expose:
+      - "9000"
+    volumes:
+      - wordpress_db:/var/www/wordpress/
+    env_file:
+      - .env
+    init: true
+  mariadb:
+    build: ./requirements/mariadb/.
+    container_name: mariadb
+    restart: on-failure
+    networks:
+      - inception
+    expose:
+      - "3306"
+    volumes:
+      - mariadb_db:/var/lib/mysql/
+    env_file:
+      - .env
+    init: true
+volumes:
+  wordpress_db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/data/wordpress_db
+  mariadb_db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/data/mariadb_db
+networks:
+  inception:
+    driver: bridge

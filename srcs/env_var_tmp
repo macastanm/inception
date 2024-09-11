@@ -1,0 +1,39 @@
+#mariadb
+DB_NAME=wordpress_db
+DB_USER=wordpress_user
+DB_PASSWORD=Abc*012345
+DB_HOST=mariadb
+DB_PASS_ROOT=123456789
+
+#Wordpress
+WP_DOMAIN=macastan.42.fr
+WP_TITLE=inception
+WP_ADMIN_USER=macastan
+WP_ADMIN_PASSWORD=Abc*012345
+WP_ADMIN_EMAIL=macastan@inception.com
+WP_GUEST_USER=joao
+WP_GUEST_EMAIL=joao@inception.com
+WP_GUEST_PASSWORD=Efg*012345
+WP_ROLE=author
+
+#salt
+AUTH_KEY=,l85 E(5U]Etv-e@W|7-sNu*POO{U+%=orFz.h@|d|Afh@4rWn/|%T<}K-[2a+Id
+SECURE_AUTH_KEY=hyD)}=E6mb`pY)}xkq+PD$=Gxm;;>KU,N>_c03G8!en:2,w,yx;,+.iI(r<7KIhI
+LOGGED_IN_KEY=Vo{Qy(HcCfsFK`Q1EvrJyFQ)WUh{Elqb(>Pd1QB43uuk3j6B}7WST.}cfB1N^mt-
+NONCE_KEY=|+?f~Wzh;6k}3|1A:HjU|TjHq:6Pujr}r>~4qP%O<!KBBoFL>4-)@8?]6@rSf@Y(
+AUTH_SALT=g^EWYX>tqw]B|ej3-I[OO$0!=.V8Zh[ynfM|@;1{16b[|^ouuX>/=R+}xIRg`L[n
+SECURE_AUTH_SALT=R%+V,tt5-ZK >sB W(!CJYN(81yF5`wc[Sh1<z91?szN]J1+Z)X`nv||Uu-k2p|K
+LOGGED_IN_SALT=k-[mq){3r&6P2}GuRV~/eu~.&A{Al81E-&wY}F+q1UBVnFSQnLN,X%uMgW387mFy
+NONCE_SALT=i,)g*9#Sfi8^0r)+=!TN-h4?8jNgX)uN|Sz$+T|Z61XE% K`O6NpAOux|fS 7Sr8
+
+#nginx/SSL
+DOMAIN_NAME=macastan.42.fr
+CERT_DIR=/etc/nginx/ssl/
+CERTIFICATE=/etc/nginx/ssl/macastan.crt
+KEY=/etc/nginx/ssl/macastan.key
+COUNTRY=PT
+STATE=PT
+LOCALITY=PORTO
+ORGANIZATION=42
+UNIT=PORTO
+COMMON_NAME=macastan.42.fr
