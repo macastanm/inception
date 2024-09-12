@@ -5,7 +5,7 @@ all: conf up
 
 conf:
 	@cp ~/.env ./srcs/
-	@mkdir -p /home/macastan/data/mariadb_db /home/macastan/data/wordpress_db
+	@mkdir -p /home/macastan/data/v_mariadb /home/macastan/data/v_wordpress
 	@sudo grep -Fq "macastan.42.fr" /etc/hosts || sudo sed -i '/127\.0\.0\.1/ s/$$/ macastan.42.fr/' /etc/hosts
 
 up: conf

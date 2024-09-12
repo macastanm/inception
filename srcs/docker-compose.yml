@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   nginx:
     build: 
@@ -27,7 +25,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - wordpress_db:/var/www/wordpress/
+      - v_wordpress:/var/www/wordpress/
   wordpress:
     build: ./requirements/wordpress/.
     container_name: wordpress
@@ -39,7 +37,7 @@ services:
     expose:
       - "9000"
     volumes:
-      - wordpress_db:/var/www/wordpress/
+      - v_wordpress:/var/www/wordpress/
     env_file:
       - .env
     init: true
@@ -52,23 +50,23 @@ services:
     expose:
       - "3306"
     volumes:
-      - mariadb_db:/var/lib/mysql/
+      - v_mariadb:/var/lib/mysql/
     env_file:
       - .env
     init: true
 volumes:
-  wordpress_db:
+  v_wordpress:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ~/data/wordpress_db
-  mariadb_db:
+      device: ~/data/v_wordpress
+  v_mariadb:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ~/data/mariadb_db
+      device: ~/data/v_mariadb
 networks:
   inception:
     driver: bridge
